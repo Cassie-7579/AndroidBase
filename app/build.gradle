@@ -1,0 +1,52 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 26
+    defaultConfig {
+        applicationId "com.fengzhi.mybase"
+        minSdkVersion 15
+        targetSdkVersion 26
+        versionCode 1
+        multiDexEnabled true
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    //noinspection GradleCompatible
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    //gson
+    implementation "com.google.code.gson:gson:$rootProject.ext.gsonVersion"
+    //butterknife
+    implementation "com.jakewharton:butterknife:$rootProject.ext.butterknifeVersion"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.ext.butterknifeVersion"
+    //glide
+    implementation "com.github.bumptech.glide:glide:$rootProject.ext.glideVersion"
+    //Logger
+    implementation "com.orhanobut:logger:$rootProject.ext.LoggerVersion"
+
+    //retrofit
+    compile "com.squareup.retrofit2:retrofit:$rootProject.ext.RetrofitVersion"
+    compile "com.squareup.retrofit2:converter-gson:$rootProject.ext.RetrofitVersion"
+    compile "com.squareup.retrofit2:adapter-rxjava:$rootProject.ext.RetrofitVersion"
+
+    compile "io.reactivex:rxandroid:$rootProject.ext.RxAndroidVersion"
+    compile "io.reactivex:rxjava:$rootProject.ext.RxJavaVersion"
+
+    compile "com.squareup.okhttp3:okhttp:$rootProject.ext.OkHttpVersion"
+    compile "com.squareup.okio:okio:$rootProject.ext.OkIOVersion"
+    compile "com.squareup.okhttp3:logging-interceptor:$rootProject.ext.OkHttpVersion"
+}
